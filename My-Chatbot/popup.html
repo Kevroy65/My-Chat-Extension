@@ -1,10 +1,24 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Iframe Chatbot Extension</title>
+    <title>My Web App</title>
+    <link rel="stylesheet" href="stylesheet.css">
 </head>
 <body>
-  <iframe src="https://my-chatbot-d59f5.web.app" width="350" height="660" style="padding: 1px; background: linear-gradient(to bottom, #fbff00, #00FF00);"></iframe>
+  <div class="popup">
+    <div class="box">
+    <img class="profile" src="profile.png">
+    <div id="view" class="view">
+      
+    </div>
+    <div class="chat">
+      <input type="text" id="message" class="message-input" placeholder="Type your message here...">
+         <button type="button" id="sendButton" class="send-button">send</button>
+    </div>
+  </div>
+
+  </div>
   <script src="popup.js"></script>
 </body>
 </html>
