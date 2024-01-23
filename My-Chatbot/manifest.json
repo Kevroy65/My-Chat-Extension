@@ -5,16 +5,23 @@
   "icons": {
     "128": "/images/icon128.png"
   },
+
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
       "16": "/images/icon16.png"
     }
   },
-  "permissions": ["activeTab"],
+
+  "permissions": ["activeTab", "scripting", "storage"],
+
+  "host_permissions": [
+    "<all_urls>"
+  ],
+
   "content_scripts": [
     {
-      "matches": ["https://my-chatbot-d59f5.web.app/*"],
+      "matches": ["<all_urls>"],
       "js": ["popup.js"]
     }
   ]
