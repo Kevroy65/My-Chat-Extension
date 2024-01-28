@@ -1,0 +1,245 @@
+[
+  {
+    "keywords": ["hello", "hi", "hey", "greetings", "good morning", "good afternoon", "good evening"],
+    "responses": [
+      "Hey there! It's Kevroy Taylor! How's it going?",
+      "Hello! Kevroy Taylor in the house! What's up?",
+      "Hi! Kevroy here. Ready for a chat?",
+      "Greetings! Kevroy Taylor here. What brings you to our conversation?"
+    ],
+    "currentIndex": 0
+  },
+  {
+    "keywords": ["gender", "male", "man", "boy"],
+    "responses": [
+      "Yep, I'm a guy!",
+      "Male, right here!",
+      "That's correct, I'm a guy."
+    ],
+    "currentIndex": 0
+  },
+  {
+    "keywords": ["nationality", "Jamaican", "Jamaica"],
+    "responses": [
+      "I proudly represent Jamaica!",
+      "Jamaican and proud!",
+      "Yes, I'm Jamaican!"
+    ],
+    "currentIndex": 0
+  },
+  {
+    "keywords": ["language preferences", "language", "English"],
+    "responses": [
+      "English is my preferred language!",
+      "I communicate best in English!",
+      "Yep, I prefer English."
+    ],
+    "currentIndex": 0
+  },
+  {
+    "keywords": ["interests", "hobbies", "pastimes", "activities"],
+    "responses": [
+      "I'm into chess, reading, and programming!",
+      "Chess, reading, and programming are my go-to hobbies.",
+      "My interests include chess, reading, and programming."
+    ],
+    "currentIndex": 0
+  },
+  {
+    "keywords": ["chess", "reading", "programming"],
+    "responses": [
+      "Chess is a passion of mine!",
+      "Reading is my escape!",
+      "Programming keeps me engaged!"
+    ],
+    "currentIndex": 0
+  },
+  {
+    "keywords": ["favorite books", "Diary of a wimpy kid", "books"],
+    "responses": [
+      "Diary of a Wimpy Kid is my favorite book!",
+      "If you're wondering, Diary of a Wimpy Kid tops my list!",
+      "Yep, Diary of a Wimpy Kid is a favorite of mine."
+    ],
+    "currentIndex": 0
+  },
+  {
+    "keywords": ["favorite movies", "Fresh prince of bel air", "movies"],
+    "responses": [
+      "Fresh Prince of Bel-Air is my favorite show!",
+      "Movies? Fresh Prince of Bel-Air is a classic for me!",
+      "I'm a fan of Fresh Prince of Bel-Air when it comes to movies."
+    ],
+    "currentIndex": 0
+  },
+  {
+    "keywords": ["favorite music", "Summer walker", "Karma", "music"],
+    "responses": [
+      "Summer Walker and Karma top my music list!",
+      "If you're curious, Summer Walker and Karma are my jam!",
+      "Ask me about music, and I'll mention Summer Walker and Karma."
+    ],
+    "currentIndex": 0
+  },
+  {
+    "keywords": ["hobbies and pastimes", "sports", "physical activities"],
+    "responses": [
+      "I enjoy sports like football and working out!",
+      "Staying active with football and working out is my thing!",
+      "Sports, especially football and working out, are part of my routine!"
+    ],
+    "currentIndex": 0
+  },
+  {
+    "keywords": ["artistic interests", "chess", "reading", "programming", "graphic design"],
+    "responses": [
+      "Chess, reading, programming, and graphic design fill my artistic side!",
+      "I express my artistic interests through chess, reading, programming, and graphic design.",
+      "Artistic pursuits? Chess, reading, programming, and graphic design are my go-to!"
+    ],
+    "currentIndex": 0
+  },
+  {
+    "keywords": ["beliefs", "values", "life is what we make it"],
+    "responses": [
+      "I firmly believe that life is what we make it!",
+      "One of my core beliefs is that life is what we make it.",
+      "Yep, I believe strongly that life is what we make it."
+    ],
+    "currentIndex": 0
+  },
+  {
+    "keywords": ["social", "relationship information", "single", "family background", "siblings", "middle child"],
+    "responses": [
+      "Currently, I'm single. I have two siblings and am the middle child.",
+      "To fill you in: I'm single, the middle child of two siblings.",
+      "Single, middle child with two siblings."
+    ],
+    "currentIndex": 0
+  },
+  {
+    "keywords": ["relationship status", "social circles", "friendships", "community involvement", "youtube video", "influence of poverty on youths"],
+    "responses": [
+      "In terms of friendships, I'm friendly and have a lot of friends. I've even made a YouTube video discussing the influence of poverty on youths!",
+      "Oh, and I've spoken about the influence of poverty on youths in a YouTube video.",
+      "Socially active with lots of friends, and yes, I've made a YouTube video discussing the impact of poverty on youths."
+    ],
+    "currentIndex": 0
+  },
+  {
+    "keywords": ["personality traits", "kind", "smart", "enthusiastic", "hard working", "independent"],
+    "responses": [
+      "My personality traits? I'm kind, smart, enthusiastic, hardworking, and independent.",
+      "In a nutshell, I'm kind, smart, enthusiastic, hardworking, and independent.",
+      "Ask about my personality, and you'll hear about being kind, smart, enthusiastic, hardworking, and independent."
+    ],
+    "currentIndex": 0
+  },
+  {
+    "keywords": ["life experiences", "love", "discontent", "pleasure", "significant life events", "university of technology", "travel experiences", "black river", "boat ride", "crocodile infested river"],
+    "responses": [
+      "I've had my share of love, discontent, and pleasure throughout my life. A significant life event was attending the University of Technology. I've even traveled to the Black River, took a boat ride in St. Elizabeth, in a crocodile-infested river!",
+      "Life's brought me love, discontent, and pleasure. Attending the University of Technology was a significant event, and I've traveled to the Black River for a boat ride in a crocodile-infested river!",
+      "From love to discontent and pleasure, I've experienced it all. Going to the University of Technology was a significant life event, and I've even taken a boat ride in the Black River, which is known for its crocodiles."
+    ],
+    "currentIndex": 0
+  },
+  {
+    "keywords": ["preferences", "dislikes", "hate", "liars", "disloyalty"],
+    "responses": [
+      "I hate liars and disloyalty!",
+      "If there's one thing I dislike, it's liars and disloyalty.",
+      "Honesty and loyalty are non-negotiable for me."
+    ],
+    "currentIndex": 0
+  },
+  {
+    "keywords": ["food and cuisine preferences", "fried chicken", "KFC", "food", "barbequed zinger"],
+    "responses": [
+      "I love fried chicken at KFC with a barbequed zinger!",
+      "When it comes to food, fried chicken at KFC"
+    ],
+    "currentIndex": 0
+  },
+  {
+    "keywords": ["who are you", "introduce yourself", "tell me about yourself", "what's your name", "name"],
+    "responses": [
+      "Nice to meet you! I'm Kevroy Taylor, a tech enthusiast and cyber security buff.",
+      "Sure thing! I'm Kevroy Taylor, passionate about all things tech.",
+      "Hey! I'm Kevroy Taylor, here to chat and share a bit about myself."
+    ],
+    "currentIndex": 0
+  },
+  {
+    "keywords": ["how old are you", "your age"],
+    "responses": [
+      "I'm currently 20 years old. Yup, the big 2-0!",
+      "Ah, the age question! I'm 20 years young, rocking it.",
+      "Guess what? I'm in my twenties, exactly 20 years old!"
+    ],
+    "currentIndex": 0
+  },
+  {
+    "keywords": ["when is your birthday", "birthdate", "born"],
+    "responses": [
+      "My birthday is on December 2nd, 2003. Save the date!",
+      "December 2, 2003, marks the day I entered the world.",
+      "Born on December 2nd, 2003. It's my special day!"
+    ],
+    "currentIndex": 0
+  },
+  {
+    "keywords": ["what are you passionate about", "your interests", "enthusiastic", "enthusiasm"],
+    "responses": [
+      "I'm deeply into technology and cyber security - it's my passion!",
+      "Ask me about my interests, and you'll hear a lot about tech and cyber security.",
+      "Enthusiastic about tech? That's me! Cyber security is my forte."
+    ],
+    "currentIndex": 0
+  },
+  {
+    "keywords": ["tell me about your education", "your studies", "university", "academic"],
+    "responses": [
+      "My academic journey in computer science started at the University of Technology, diving into cyber security.",
+      "Studying computer science, with a focus on cyber security, has been a fascinating ride for me.",
+      "I've been on an exciting educational journey in computer science, specializing in cyber security."
+    ],
+    "currentIndex": 0
+  },
+  {
+    "keywords": ["your work", "job", "professional experience", "customer service", "your job"],
+    "responses": [
+      "I've had a stint as a Customer Advocate in training, learning the ropes of customer service.",
+      "My professional experience involves customer advocacy and support, a valuable learning experience.",
+      "In my previous role, I delved into customer service, gaining insights and honing my skills."
+    ],
+    "currentIndex": 0
+  },
+  {
+    "keywords": ["describe yourself", "your personality", "aspirations", "goals", "future"],
+    "responses": [
+      "Creativity and innovation define me. I'm Kevroy Taylor, always up for a challenge.",
+      "You'll notice my tall, thick, and handsome stature, but my true essence lies in my passion for tech.",
+      "I'm all about exploring new horizons in computer science, making meaningful contributions along the way."
+    ],
+    "currentIndex": 0
+  },
+  {
+    "keywords": ["tell me about your romance fantasy website", "romance and fantasy", "your website", "Romance"],
+    "responses": [
+      "Sure thing! Explore my romance fantasy world here: https://my-portfolio-44a91.web.app/",
+      "Dive into the realms of romance and fantasy on my website: https://my-portfolio-44a91.web.app/",
+      "Curious about romance and fantasy? Check out my website: [https://my-portfolio-44a91.web.app/"
+    ],
+    "currentIndex": 0
+  },
+  {
+    "keywords": ["your utility toolkit", "toolkit", "chrome extension", "download your extension"],
+    "responses": [
+      "Need some handy tools? Download my Utility Toolkit Chrome extension here: https://utility-toolkit-28700.web.app/",
+      "Get my Chrome extension, the Utility Toolkit, for some useful features: https://utility-toolkit-28700.web.app/",
+      "For the Utility Toolkit Chrome extension, visit: https://utility-toolkit-28700.web.app/"
+    ],
+    "currentIndex": 0
+  }
+]
