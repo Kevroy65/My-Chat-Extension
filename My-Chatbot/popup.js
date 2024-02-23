@@ -1,3 +1,12 @@
+// Function to sanitize user input
+function sanitizeInput(input) {
+  return input.replace(/&/g, '&amp;')
+              .replace(/</g, '&lt;')
+              .replace(/>/g, '&gt;')
+              .replace(/"/g, '&quot;')
+              .replace(/'/g, '&#39;');
+}
+
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
@@ -60,10 +69,13 @@ document.addEventListener("DOMContentLoaded", async function () {
     sound.play();
 
     var messageText = document.getElementById("message").value.toLowerCase();
+    
+    // Sanitize user input before displaying
+    var sanitizedMessageText = sanitizeInput(messageText);
 
-    if (messageText) {
-      messages.push(messageText);
-      var newMessageDiv = '<div class="reply-message-box"><p class="reply-message">' + messageText + '</p></div>';
+    if (sanitizedMessageText) {
+      messages.push(sanitizedMessageText);
+      var newMessageDiv = '<div class="reply-message-box"><p class="reply-message">' + sanitizedMessageText + '</p></div>';
       document.getElementById("view").innerHTML += newMessageDiv;
 
       // Store messages array in localStorage
