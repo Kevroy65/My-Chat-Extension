@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <title>My Web App</title>
-    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="Style.css">
 </head>
 <body>
   <div class="popup">
@@ -12,13 +12,13 @@
     <div id="view" class="view">
       
     </div>
-    <div class="chat">
+    <form class="chat">
       <input type="text" id="message" class="message-input" placeholder="Type your message here...">
-         <button type="button" id="sendButton" class="send-button">send</button>
-    </div>
+         <button type="submit" id="sendButton" class="send-button">send</button>
+    </form>
   </div>
 
   </div>
-  <script src="popup.js"></script>
+  <script type="module" src="popup.js"></script>
 </body>
 </html>
