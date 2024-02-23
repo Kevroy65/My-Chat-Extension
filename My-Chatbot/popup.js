@@ -22,6 +22,7 @@ const firebaseConfig = {
     messagingSenderId: "932504358924",
     appId: "1:932504358924:web:6a05986285b626cda09e29",
     measurementId: "G-MPL0EJD479"
+    
 };
 
 // Initialize Firebase
@@ -64,9 +65,6 @@ document.addEventListener("DOMContentLoaded", async function () {
   // Event listener code...
   document.getElementById("sendButton").addEventListener("click", async function (event) {
     event.preventDefault();
-    // Play the sound effect immediately
-    var sound = new Audio('Cash-Register.mp3');
-    sound.play();
 
     var messageText = document.getElementById("message").value.toLowerCase();
     
