@@ -2,7 +2,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
 import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
-import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -106,34 +105,6 @@ document.addEventListener("DOMContentLoaded", async function () {
       
       // Log confirmation in console
       console.log('Message logged successfully!');
-
-      // Obtain the currently authenticated user's data from local storage
-     const currentUserData = localStorage.getItem('userData');
-     if (currentUserData) {
-  const currentUser = JSON.parse(currentUserData);
-
-  // Get a reference to Firestore
-  const db = getFirestore(app);
-
-  // Create a collection reference using the user's UID
-  const userCollectionRef = collection(db, currentUser.uid);
-
-  // Data to be stored in the document
-  const userData = {
-    email: currentUser.email,
-    message: messageText // Add the message to be stored in Firestore
-  };
-
-  try {
-    // Add the document to the collection
-    const docRef = await addDoc(userCollectionRef, userData);
-    console.log("Document written with ID: ", docRef.id);
-  } catch (e) {
-    console.error("Error adding document: ", e);
-  }
-     } else {
-        console.error('No user data found.');
-     }
     }
   });
 });
