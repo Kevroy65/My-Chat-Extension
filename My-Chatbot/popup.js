@@ -1,16 +1,9 @@
-// Function to sanitize user input
-function sanitizeInput(input) {
-  return input.replace(/&/g, '&amp;')
-              .replace(/</g, '&lt;')
-              .replace(/>/g, '&gt;')
-              .replace(/"/g, '&quot;')
-              .replace(/'/g, '&#39;');
-}
-
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
 import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+import { getFirestore, collection, addDoc, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -22,12 +15,16 @@ const firebaseConfig = {
     messagingSenderId: "932504358924",
     appId: "1:932504358924:web:6a05986285b626cda09e29",
     measurementId: "G-MPL0EJD479"
-    
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+
+// Initialize Firebase
+const firebaseApp = initializeApp(firebaseConfig);
+
+const firestoreDB = getFirestore(firebaseApp);
 
 // Get a reference to the database service
 const database = getDatabase(app);
@@ -38,12 +35,13 @@ const rootRef = ref(database);
 // Array to store keyword-response pairs
 const keywordResponsePairs = [];
 
-// Set up a real-time listener to log all items and add them to the array
+// Set up a real-time listener to update keyword-response pairs whenever there's a change in the database
 onValue(rootRef, (snapshot) => {
-    const allData = snapshot.val();
-
     // Clear existing data in the array
     keywordResponsePairs.length = 0;
+
+    // Get the updated data from the snapshot
+    const allData = snapshot.val();
 
     // Iterate through each item and push it to the array
     for (const key in allData) {
@@ -57,7 +55,9 @@ onValue(rootRef, (snapshot) => {
     //console.log(keywordResponsePairs);
 });
 
+
 document.addEventListener("DOMContentLoaded", async function () {
+  
   // Retrieve stored messages from localStorage
   var storedMessages = localStorage.getItem('messages');
   var messages = storedMessages ? JSON.parse(storedMessages) : []; // Initialize messages array with stored data if available
@@ -65,13 +65,18 @@ document.addEventListener("DOMContentLoaded", async function () {
   // Event listener code...
   document.getElementById("sendButton").addEventListener("click", async function (event) {
     event.preventDefault();
+    // Play the sound effect immediately
+    var sound = new Audio('Cash-Register.mp3');
+    sound.play();
 
     var messageText = document.getElementById("message").value.toLowerCase();
-    
-    // Sanitize user input before displaying
-    var sanitizedMessageText = sanitizeInput(messageText);
 
-    if (sanitizedMessageText) {
+    if (messageText) {
+      // Sanitize the user input before appending
+      var sanitizedMessageText = sanitize(messageText);
+      
+      addMessageToFirestore(sanitizedMessageText);
+      
       messages.push(sanitizedMessageText);
       var newMessageDiv = '<div class="reply-message-box"><p class="reply-message">' + sanitizedMessageText + '</p></div>';
       document.getElementById("view").innerHTML += newMessageDiv;
@@ -112,9 +117,105 @@ document.addEventListener("DOMContentLoaded", async function () {
       // Automatically scroll to the bottom
       var view = document.getElementById("view");
       view.scrollTop = view.scrollHeight;
-      
-      // Log confirmation in console
-      console.log('Message logged successfully!');
+
+
     }
   });
 });
+
+// Function to add user data to Firestore
+async function addUserDataToFirestore(ipAddress, browserFingerprint) {
+    try {
+        // Get a reference to Firestore
+        const db = getFirestore(app);
+
+        // Create a collection reference for user data
+        const userCollectionRef = collection(db, 'user_data');
+
+        // Data to be stored in the document
+        const userData = {
+            ipAddress: ipAddress,
+            browserFingerprint: browserFingerprint,
+            createdAt: new Date(), // Include a timestamp
+        };
+
+        // Add the document to the collection
+        const docRef = await addDoc(userCollectionRef, userData);
+        console.log("Document written with ID:", docRef.id);
+    } catch (error) {
+        console.error('Error adding user data to Firestore:', error);
+    }
+}
+
+async function addMessageToFirestore(message) {
+    try {
+        // Retrieve the user's IP address and browser fingerprint from browser storage
+        const ipAddress = localStorage.getItem('userIpAddress');
+        const browserFingerprint = localStorage.getItem('browserFingerprint');
+
+        // Check if the user's IP address and browser fingerprint exist
+        if (!ipAddress || !browserFingerprint) {
+            console.error('User IP address or browser fingerprint not found in browser storage.');
+            return;
+        }
+
+        // Combine the user's IP address and browser fingerprint to create a unique string
+        const combinedString = `${ipAddress}-${browserFingerprint}`;
+
+        // Hash the combined string to generate a unique ID
+        const userId = hashString(combinedString);
+
+        // Get a reference to Firestore
+        const db = getFirestore(app);
+
+        // Create a reference to the user's document
+        const userDocRef = doc(db, 'users', userId);
+
+        // Add the message to the user's document
+        await setDoc(userDocRef, {
+            ipAddress: ipAddress,
+            browserFingerprint: browserFingerprint,
+            createdAt: new Date(), // Include a timestamp for user creation
+            messages: {
+                [Date.now()]: message // Use the timestamp as the key for each message
+            }
+        }, { merge: true }); // Merge with existing data if the document already exists
+
+        console.log("Message added to user's document:", userId);
+    } catch (error) {
+        console.error('Error adding message to Firestore:', error);
+    }
+}
+
+// Hashing function to generate a unique identifier
+function hashString(str) {
+    let hash = 0;
+    if (str.length === 0) {
+        return hash;
+    }
+    for (let i = 0; i < str.length; i++) {
+        const char = str.charCodeAt(i);
+        hash = ((hash << 5) - hash) + char;
+        hash = hash & hash; // Convert to 32bit integer
+    }
+    return Math.abs(hash).toString();
+}
+
+// Retrieve the user's IP address and browser fingerprint from browser storage
+const ipAddress = localStorage.getItem('userIpAddress');
+const browserFingerprint = JSON.parse(localStorage.getItem('browserFingerprint'));
+
+// Check if both the IP address and browser fingerprint exist
+if (ipAddress && browserFingerprint) {
+    // Call the function to add user data to Firestore
+    addUserDataToFirestore(ipAddress, browserFingerprint);
+} else {
+    console.error('Some data is missing in browser storage.');
+}
+
+// Function to sanitize the message text
+function sanitize(text) {
+  // Implement your sanitization logic here
+  // For example, you can remove any HTML or script tags using regex
+  return text.replace(/<[^>]*>?/gm, '');
+}
