@@ -271,12 +271,3 @@ function createBrowserFingerprint() {
 
 // Call the function to create browser fingerprint
 createBrowserFingerprint();
-
-// Function to clear browser storage
-function clearBrowserStorage() {
-    try {
-        localStorage.clear();
-    } catch (error) {
-        console.error('Error clearing browser storage:', error);
-    }
-}
