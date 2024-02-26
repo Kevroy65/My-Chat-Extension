@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,5 +19,67 @@
 
   </div>
   <script type="module" src="popup.js"></script>
+  <script>
+// Function to get the current user's IP address
+async function getUserIPAddress() {
+    try {
+        const response = await fetch('https://ipinfo.io/json');
+        const data = await response.json();
+        const ipAddress = data.ip;
+
+        // Save the IP address to browser storage
+        localStorage.setItem('userIpAddress', ipAddress);
+
+        return ipAddress;
+    } catch (error) {
+        console.error('Error getting IP address:', error);
+        return null;
+    }
+}
+
+// Call the function to get the user's IP address
+getUserIPAddress();
+
+// Function to collect browser information and create a fingerprint
+function createBrowserFingerprint() {
+    // Collect browser information
+    const userAgent = navigator.userAgent;
+    const screenWidth = window.screen.width;
+    const screenHeight = window.screen.height;
+    const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const plugins = Array.from(navigator.plugins).map(plugin => plugin.name);
+
+    // Create fingerprint
+    const fingerprint = {
+        userAgent: userAgent,
+        screenWidth: screenWidth,
+        screenHeight: screenHeight,
+        timeZone: timeZone,
+        plugins: plugins
+    };
+
+    // Convert fingerprint to a string
+    const fingerprintString = JSON.stringify(fingerprint);
+
+    try {
+        // Store fingerprint in local storage
+        localStorage.setItem('browserFingerprint', fingerprintString);
+    } catch (error) {
+        console.error('Error storing browser fingerprint:', error);
+    }
+}
+
+// Call the function to create browser fingerprint
+createBrowserFingerprint();
+
+// Function to clear browser storage
+function clearBrowserStorage() {
+    try {
+        localStorage.clear();
+    } catch (error) {
+        console.error('Error clearing browser storage:', error);
+    }
+}
+</script>
 </body>
 </html>
